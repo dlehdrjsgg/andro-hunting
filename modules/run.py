@@ -2,8 +2,10 @@
 from modules.decompiler.apktool import decompileApkUsingApktool
 from modules.decompiler.jadx import decompileApkUsingJadx
 from modules.downloader.playstore import playstore_download
-from modules.parser.deeplink import parseDeeplinks, filterDeeplinks
-from modules.parser.smali import parseSmali, filterParams
+from modules.parser.deeplink import parseDeeplinks
+from modules.parser.smali import parseSmali
+from modules.filter.deeplink import filterDeeplinks
+from modules.filter.param import filterParams
 from modules.tester.test import testDeeplink
 import os
 import dotenv

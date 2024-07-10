@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from modules.file_handler.csv import saveWithCSV
+from modules.file_handler.csv import saveCSV
 
 
 def getStringValue(strings_dict, name):
@@ -99,6 +99,6 @@ def parseDeeplinks(package_name, csv_dir, manifest_file, strings_file):
                 if deeplink != "" and deeplink.find("http") == -1:
                     print(f"[{activity_name}] : {deeplink}")
                     result.add(deeplink)
-                    saveWithCSV(activity_name, deeplink, package_name, csv_dir)
+                    saveCSV(activity_name, deeplink, package_name, csv_dir)
 
     return list(result)
