@@ -5,8 +5,12 @@ from modules.downloader.playstore import playstore_download
 from modules.parser.deeplink import parseDeeplinks, filterDeeplinks
 from modules.parser.smali import parseSmali, filterParams
 from modules.tester.test import testDeeplink
+import os
+import dotenv
 
-REDIRECT_URL = "https://example.com"
+dotenv.load_dotenv()
+# REDIRECT_URL = "https://example.com"
+REDIRECT_URL = os.getenv("REDIRECT_URL")
 
 
 def run(package_name):
