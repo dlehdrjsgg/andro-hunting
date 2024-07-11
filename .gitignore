@@ -176,3 +176,8 @@ pyrightconfig.json
 # End of https://www.toptal.com/developers/gitignore/api/python
 
 applist.txt
+data/
+screen.xml
+apktool.jar
+error.txt
+.DS_Store
