@@ -7,6 +7,7 @@ from modules.parser.smali import parseSmali
 from modules.filter.deeplink import filterDeeplinks
 from modules.filter.param import filterParams
 from modules.tester.test import testDeeplink
+from modules.setup.apktool import setup_apktool
 import os
 import dotenv
 
@@ -19,6 +20,8 @@ def run(package_name):
     csv_dir = "./data/csv/"
 
     try:
+        setup_apktool()
+
         print("Downloading APK...")
         playstore_download(package_name)
 
