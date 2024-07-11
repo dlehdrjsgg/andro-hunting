@@ -25,9 +25,6 @@ def run(package_name):
         print("Downloading APK...")
         playstore_download(package_name)
 
-        print("Decompiling APK (jadx)...")
-        decompileApkUsingJadx(package_name)
-
         print("Decompiling APK (apktool)...")
         decompileApkUsingApktool(package_name)
 
@@ -35,8 +32,8 @@ def run(package_name):
         deeplinks = parseDeeplinks(
             package_name,
             csv_dir,
-            f"./data/decompiled/{package_name}/resources/AndroidManifest.xml",
-            f"./data/decompiled/{package_name}/resources/res/values/strings.xml",
+            f"./data/decompiled/apktool_{package_name}/AndroidManifest.xml",
+            f"./data/decompiled/apktool_{package_name}/res/values/strings.xml",
         )
         deeplinks = filterDeeplinks(deeplinks)
         if deeplinks:
