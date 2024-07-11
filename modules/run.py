@@ -1,9 +1,8 @@
 # modules/run.py
 from modules.decompiler.apktool import decompileApkUsingApktool
-from modules.decompiler.jadx import decompileApkUsingJadx
 from modules.downloader.playstore import playstore_download
 from modules.parser.deeplink import parseDeeplinks
-from modules.parser.smali import parseSmali
+from modules.parser.smali import extractSmaliData
 from modules.filter.deeplink import filterDeeplinks
 from modules.filter.param import filterParams
 from modules.tester.test import testDeeplink
@@ -37,12 +36,11 @@ def run(package_name):
         )
         deeplinks = filterDeeplinks(deeplinks)
         if deeplinks:
-            print(deeplinks)
             print("Deeplinks parsed and saved successfully.")
         else:
             print("No deeplinks found or error in parsing.")
 
-        params, addURIs, UriParses, addJsIfs, method = parseSmali(
+        params, addURIs, UriParses, addJsIfs, method = extractSmaliData(
             f"./data/decompiled/apktool_{package_name}", deeplinks
         )
         params = filterParams(params)
