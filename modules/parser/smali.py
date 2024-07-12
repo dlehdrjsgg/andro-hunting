@@ -19,6 +19,14 @@ def parseSmali(file_path):
     for line in lines:
         line = line.strip()
         words = line.split(" ")
+
+        if words[0] == ".class":
+            class_name = line
+        elif words[0] == ".method":
+            method_name = line
+
+        if ".annotation" in line and "Landroid/webkit/JavascriptInterface" in line:
+            method.add(method_name.split(" ")[2].split("(")[0])
         try:
             if "const-string" in line:
                 local_register[words[1][:-1]] = words[2].split('"')[1]
@@ -80,4 +88,4 @@ def extractSmaliData(decompile_dir, deeplinks):
                 UriParses.add(Uri)
                 break
 
-    return params, addURIs, UriParses, addJsIfs, method
+    return params, addURIs, UriParses, addJsIfs, methods
