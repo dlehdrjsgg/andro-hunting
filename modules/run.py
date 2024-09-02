@@ -63,7 +63,7 @@ def run(package_name):
 
         testDeeplink(deeplinks, params, REDIRECT_URL)
     except:
-        with open("error.txt", "w") as f:
+        with open("error.txt", "a") as f:
             f.write(package_name + "\n")
         pass
 
